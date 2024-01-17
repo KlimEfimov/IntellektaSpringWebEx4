@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TechIndustry</title>
+</head>
+<body>
+<h1>Welcome to TechIndustry!</h1>
+The current seller name is <span th:text="${sellerName}"></span>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Sale ID</th>
+        <th>Store date</th>
+        <th>Sale date</th>
+        <th>Price</th>
+    </tr>
+    <tr th:each="s: ${sales}">
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.product_id}"></td>
+        <td th:text="${s.store_date}"></td>
+        <td th:text="${s.sales_date}"></td>
+        <td th:text="${s.price}"></td>
+    </tr>
+</table>
+
+<h2>Добавить продажу</h2>
+<form action="/working" method="post">
+    Product ID: <input type="text" name="product_id"><br/>
+    Store date: <input type="date" name="store_date"><br/>
+    Sale date:  <input type="date" name="sales_date"><br/>
+    Price:      <input type="number" name="price" step="0.1"><br/>
+    <button type="submit">Add sale</button>
+</form>
+</body>
+</html>
